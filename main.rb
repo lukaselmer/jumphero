@@ -1,4 +1,3 @@
-require_relative 'game'
+require_relative 'app/game'
 
 puts Game.new.started
-
