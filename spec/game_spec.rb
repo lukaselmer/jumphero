@@ -1,8 +1,11 @@
 require_relative '../app/game'
+require_relative '../app/helpers/gosu_helper'
 
 RSpec.describe Game do
-  before(:example) do
-    @game = Game.new
+  before(:each) do
+    @game_config = GameConfig.new
+    @game_config.jump_duration = 1500
+    @game = Game.new(@game_config)
   end
 
   describe 'jumping' do
@@ -15,16 +18,17 @@ RSpec.describe Game do
       expect(@game.jumping?).to be_truthy
     end
 
-    it 'should stop jumping after 15 frames' do
-      @game.frames = 20
+    it 'should stop jumping after 1500 milliseconds' do
+      @game.update(200)
       expect(@game.jumping?).to be_falsey
       @game.jump
       expect(@game.jumping?).to be_truthy
-      @game.frames = 21
+      @game.update(201)
       expect(@game.jumping?).to be_truthy
-      @game.frames = 35
+      @game.update(1699)
+      expect(@game.jumping?).to be_truthy
+      @game.update(1700)
       expect(@game.jumping?).to be_falsey
-      @game.frames = 36
     end
   end
 end
