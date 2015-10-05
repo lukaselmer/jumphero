@@ -32,6 +32,10 @@ class JumpingBehavior
     Math.sin(jumping_completion_rate * Math::PI) * @config.jump_height
   end
 
+  def jumping_up?
+    jumping_completion_rate <= 0.5
+  end
+
   private
   def update_jumping
     return unless jumping?

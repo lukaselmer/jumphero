@@ -89,5 +89,15 @@ RSpec.describe JumpingBehavior do
       update_with_time(35)
       expect(@jumping_behavior.jumping?).to be_falsey
     end
+
+    it 'jumps up and falls down' do
+      update_with_time(20)
+      @jumping_behavior.jump
+      expect(@jumping_behavior.jumping_up?).to be_truthy
+      update_with_time(27)
+      expect(@jumping_behavior.jumping_up?).to be_truthy
+      update_with_time(28)
+      expect(@jumping_behavior.jumping_up?).to be_falsey
+    end
   end
 end
