@@ -16,6 +16,7 @@ class JumpingBehavior
   end
 
   def jump
+    return if jumping?
     @jumping_start = @game_time.m
     @jumping = true
   end

@@ -78,5 +78,16 @@ RSpec.describe JumpingBehavior do
       expect(@jumping_behavior).to receive(:jumping_completion_rate).and_return(1.0)
       expect(@jumping_behavior.jumping_height).to be_within(0.001).of(0.0)
     end
+
+    it 'does not start a new jump when already jumping' do
+      update_with_time(20)
+      @jumping_behavior.jump
+      expect(@jumping_behavior.jumping?).to be_truthy
+      update_with_time(34)
+      @jumping_behavior.jump
+      expect(@jumping_behavior.jumping?).to be_truthy
+      update_with_time(35)
+      expect(@jumping_behavior.jumping?).to be_falsey
+    end
   end
 end

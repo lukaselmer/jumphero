@@ -1,11 +1,11 @@
 class GameConfig
-  # The jump duration in milliseconds
+  # @return [Fixnum] the jump duration in milliseconds
   attr_accessor :jump_duration
-  # The maximum jump height
+  # @return [Fixnum] the maximum jump height
   attr_accessor :jump_height
 
   def initialize
-    self.jump_duration = 1500
-    self.jump_height = 300
+    self.jump_duration = 1100
+    self.jump_height = 200
   end
 end

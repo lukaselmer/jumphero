@@ -23,4 +23,8 @@ class Game
   def jump
     @jumping_behavior.jump
   end
+
+  def jumping_height
+    @jumping_behavior.jumping_height
+  end
 end
