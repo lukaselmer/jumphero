@@ -20,6 +20,10 @@ class Game
     @jumping_behavior.jumping?
   end
 
+  def jumping_up?
+    @jumping_behavior.jumping_up?
+  end
+
   def jump
     @jumping_behavior.jump
   end

@@ -9,14 +9,14 @@ class GameWindow < Gosu::Window
     super
     self.caption = 'Jump Hero'
     @game = Game.new
-    @player_drawer = PlayerDrawer.new(self)
+    @player_drawer = PlayerDrawer.new(self, @game)
     @background_drawer = BackgroundDrawer.new(self)
     @score = Gosu::Font.new(30)
   end
 
   def draw
     @background_drawer.draw
-    @player_drawer.draw(@game.jumping_height)
+    @player_drawer.draw
     draw_score
   end
 
