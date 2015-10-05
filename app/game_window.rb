@@ -11,11 +11,13 @@ class GameWindow < Gosu::Window
     @game = Game.new
     @player_drawer = PlayerDrawer.new(self)
     @background_drawer = BackgroundDrawer.new(self)
+    @score = Gosu::Font.new(30)
   end
 
   def draw
     @background_drawer.draw
     @player_drawer.draw(@game.jumping_height)
+    draw_score
   end
 
   def update
@@ -30,7 +32,9 @@ class GameWindow < Gosu::Window
   end
 
   def draw_score
-    # TODO: implement score: @message = Gosu::Image.from_text(self, 'Hello, World!', Gosu.default_font_name,
-    # 30); @message.draw(10, 10, 0)
+    meters_per_second = 3.61
+    meters_ran = (Gosu.milliseconds.to_f / 1000 * meters_per_second).round(1)
+    text = "#{meters_ran}m"
+    @score.draw("#{meters_ran}m", width - 30 - @score.text_width("#{meters_ran}m"), height - 50, 20, 1.0, 1.0, 0xff_f0ffff)
   end
 end
