@@ -1,9 +1,12 @@
 class PlayerDrawer
   def initialize(window)
-    @player = Gosu::Image.new(window, Media.path('player/preview/run.gif'), false)
+    @player = (1..5).map do |i|
+      Gosu::Image.new(window, Media.path("player/transparent/run/frame-#{i}.png"), false)
+    end
   end
 
   def draw(jumping_height)
-    @player.draw(10, 570 - jumping_height, 0, scale_x=0.2, scale_y=0.2)
+    player = @player[(GosuHelper.m.to_f / 75).round % @player.length]
+    player.draw(10, 577 - jumping_height, 0, scale_x=0.2, scale_y=0.2)
   end
 end
