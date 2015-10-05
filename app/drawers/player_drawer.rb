@@ -14,7 +14,7 @@ class PlayerDrawer
   end
 
   private
-  
+
   def current_animation
     return @running_animation[running_frame] unless @game.jumping?
 
