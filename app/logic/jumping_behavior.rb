@@ -1,5 +1,7 @@
 # Handles the jumping logic
 class JumpingBehavior
+  # @param [GameConfig] config
+  # @param [GameTime] game_time
   def initialize(config, game_time)
     @config = config
     @game_time = game_time
@@ -23,6 +25,10 @@ class JumpingBehavior
 
     time_jumping = @game_time.m - @jumping_start
     1.0 / @config.jump_duration * time_jumping
+  end
+
+  def jumping_height
+    Math.sin(jumping_completion_rate * Math::PI) * @config.jump_height
   end
 
   private

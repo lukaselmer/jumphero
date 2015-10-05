@@ -11,6 +11,7 @@ RSpec.describe JumpingBehavior do
   before(:each) do
     @config = GameConfig.new
     @config.jump_duration = 15
+    @config.jump_height = 100
     @time = GameTime.new(0)
 
     @jumping_behavior = JumpingBehavior.new(@config, @time)
@@ -65,6 +66,17 @@ RSpec.describe JumpingBehavior do
       expect(@jumping_behavior.jumping_completion_rate).to be_within(0.001).of(1.0)
       update_with_time(110)
       expect(@jumping_behavior.jumping_completion_rate).to be_within(0.001).of(1.0)
+    end
+
+    it 'calculates the jumping height according to the jump completion rate' do
+      expect(@jumping_behavior).to receive(:jumping_completion_rate).and_return(0.0)
+      expect(@jumping_behavior.jumping_height).to be_within(0.001).of(0.0)
+      expect(@jumping_behavior).to receive(:jumping_completion_rate).and_return(0.5)
+      expect(@jumping_behavior.jumping_height).to be_within(0.001).of(100.0)
+      expect(@jumping_behavior).to receive(:jumping_completion_rate).and_return(0.75)
+      expect(@jumping_behavior.jumping_height).to be_within(0.01).of(70.71)
+      expect(@jumping_behavior).to receive(:jumping_completion_rate).and_return(1.0)
+      expect(@jumping_behavior.jumping_height).to be_within(0.001).of(0.0)
     end
   end
 end
