@@ -4,6 +4,7 @@ require_relative 'game'
 require_relative 'drawers/player_drawer'
 require_relative 'drawers/background_drawer'
 require_relative 'drawers/score_drawer'
+require_relative 'drawers/obstacle_drawer'
 
 class GameWindow < Gosu::Window
   def initialize(width=1024, height=768, fullscreen=false)
@@ -14,12 +15,14 @@ class GameWindow < Gosu::Window
     @background_drawer = BackgroundDrawer.new(self)
     @jumping_sound = GosuHelper.load_sample('jump/jump-1.m4a')
     @score_drawer = ScoreDrawer.new(@game)
+    @obstacle_drawer = ObstacleDrawer.new(self, @game)
   end
 
   def draw
     @background_drawer.draw
     @player_drawer.draw
     @score_drawer.draw(width, height)
+    @obstacle_drawer.draw
   end
 
   def update
