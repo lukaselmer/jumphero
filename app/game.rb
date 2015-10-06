@@ -2,6 +2,7 @@ require_relative 'helpers/gosu_helper'
 require_relative 'game_config'
 require_relative 'game_time'
 require_relative 'logic/jumping_behavior'
+require_relative 'game/score'
 
 
 class Game
@@ -9,6 +10,7 @@ class Game
     @config = game_config
     @game_time = game_time
     @jumping_behavior = JumpingBehavior.new(@config, @game_time)
+    @score = Score.new(@game_time)
   end
 
   def update(milliseconds = nil)
@@ -30,5 +32,9 @@ class Game
 
   def jumping_height
     @jumping_behavior.jumping_height
+  end
+
+  def meters
+    @score.meters
   end
 end
