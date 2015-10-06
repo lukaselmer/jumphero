@@ -40,6 +40,6 @@ class GameWindow < Gosu::Window
     meters_per_second = 3.61
     meters_ran = (GosuHelper.m.to_f / 1000 * meters_per_second).round(1)
     text = "#{meters_ran}m"
-    @score.draw("#{meters_ran}m", width - 30 - @score.text_width("#{meters_ran}m"), height - 50, 20, 1.0, 1.0, 0xff_f0ffff)
+    @score.draw(text, width - 30 - @score.text_width(text), height - 50, 20, 1.0, 1.0, 0xff_f0ffff)
   end
 end
