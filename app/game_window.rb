@@ -12,9 +12,7 @@ class GameWindow < Gosu::Window
     @player_drawer = PlayerDrawer.new(self, @game)
     @background_drawer = BackgroundDrawer.new(self)
     @score = Gosu::Font.new(30)
-    @jump_landing_sound = GosuHelper.load_sample('jump/jump-land.wav')
-    @jumping_sound = GosuHelper.load_sample('jump/jump-1.mp3')
-    @jumping_sound.play
+    @jumping_sound = GosuHelper.load_sample('jump/jump-1.m4a')
   end
 
   def draw
