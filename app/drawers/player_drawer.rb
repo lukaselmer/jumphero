@@ -3,9 +3,9 @@ class PlayerDrawer
   # @param [Game] game
   def initialize(window, game)
     @game = game
-    @running_animation = (1..5).map { |i| GosuHelper.load_image(window, "player/transparent/run/frame-#{i}.png") }
-    @jump_up = GosuHelper.load_image(window, 'player/transparent/jump/jump-up.png')
-    @jump_down = GosuHelper.load_image(window, 'player/transparent/jump/jump-down.png')
+    @running_animation = (1..5).map { |i| GosuHelper.load_image("player/transparent/run/frame-#{i}.png") }
+    @jump_up = GosuHelper.load_image('player/transparent/jump/jump-up.png')
+    @jump_down = GosuHelper.load_image('player/transparent/jump/jump-down.png')
   end
 
   def draw
