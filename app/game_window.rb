@@ -29,6 +29,8 @@ class GameWindow < Gosu::Window
       @jumping_sound.play if @game.jump
     end
 
+    @game.reset if button_down? Gosu::KbR
+
     @game.update
   end
 
