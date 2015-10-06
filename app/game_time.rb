@@ -4,4 +4,8 @@ class GameTime
   def initialize(milliseconds)
     self.m = milliseconds
   end
+
+  def s
+    m.to_f / 1000
+  end
 end
