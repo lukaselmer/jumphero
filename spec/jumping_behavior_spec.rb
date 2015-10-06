@@ -99,5 +99,15 @@ RSpec.describe JumpingBehavior do
       update_with_time(28)
       expect(@jumping_behavior.jumping_up?).to be_falsey
     end
+
+    it 'returns whether jump was successful' do
+      update_with_time(20)
+      expect(@jumping_behavior.jump).to be_truthy
+      expect(@jumping_behavior.jump).to be_falsey
+      update_with_time(22)
+      expect(@jumping_behavior.jump).to be_falsey
+      update_with_time(35)
+      expect(@jumping_behavior.jump).to be_truthy
+    end
   end
 end
