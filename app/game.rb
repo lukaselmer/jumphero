@@ -37,4 +37,8 @@ class Game
   def meters
     @score.meters
   end
+
+  def reset
+    @score.reset
+  end
 end

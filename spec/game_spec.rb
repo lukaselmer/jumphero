@@ -31,4 +31,13 @@ RSpec.describe Game do
       expect(@game.jumping?).to be_falsey
     end
   end
+
+  describe 'reset' do
+    it 'resets the score' do
+      @game.update(1000)
+      expect(@game.meters).to be_between(10, 1000)
+      @game.reset
+      expect(@game.meters).to eq(0)
+    end
+  end
 end
