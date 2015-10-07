@@ -4,11 +4,13 @@ require_relative 'game_time'
 require_relative 'logic/jumping_behavior'
 require_relative 'game/score'
 require_relative 'game/obstacle'
+require_relative 'game/obstacle_factory'
 
 class Game
   attr_reader :obstacles
 
-  def initialize(game_config = GameConfig.new, game_time = GameTime.new(GosuHelper.m))
+  def initialize(game_config = GameConfig.new, game_time = GameTime.new(GosuHelper.m),
+                 obstacle_factory = ObstacleFactory.new(game_time))
     @config = game_config
     @game_time = game_time
     @jumping_behavior = JumpingBehavior.new(@config, @game_time)

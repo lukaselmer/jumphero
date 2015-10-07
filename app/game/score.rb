@@ -2,7 +2,7 @@ class Score
   # @param [GameTime] game_time
   def initialize(game_time)
     @game_time = game_time
-    @start_time = 0
+    @start_time = @game_time.s
   end
 
   def reset

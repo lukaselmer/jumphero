@@ -3,9 +3,11 @@ require_relative '../app/helpers/gosu_helper'
 
 RSpec.describe Game do
   before(:each) do
+    game_time = GameTime.new
+    @obstacle_factory = ObstacleFactory.new(game_time)
     @game_config = GameConfig.new
     @game_config.jump_duration = 1500
-    @game = Game.new(@game_config)
+    @game = Game.new(@game_config, game_time, @obstacle_factory)
   end
 
   describe 'jumping' do
@@ -39,5 +41,11 @@ RSpec.describe Game do
       @game.reset
       expect(@game.meters).to eq(0)
     end
+
+    # it 'resets the obstacle factory' do
+    #   @obstacle_factory.generate_obstacle
+    #   @game.reset
+    #   expect(@obstacle_factory.obstacles).to eq([])
+    # end
   end
 end

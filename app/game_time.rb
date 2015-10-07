@@ -1,7 +1,7 @@
 class GameTime
   attr_accessor :m
 
-  def initialize(milliseconds)
+  def initialize(milliseconds = 0)
     self.m = milliseconds
   end
 
