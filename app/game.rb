@@ -10,7 +10,7 @@ class Game
   attr_reader :obstacles
 
   def initialize(game_config = GameConfig.new, game_time = GameTime.new(GosuHelper.m),
-                 obstacle_factory = ObstacleFactory.new(game_time))
+                 obstacle_factory = ObstacleFactory.new(game_config, game_time))
     @config = game_config
     @game_time = game_time
     @obstacle_factory = obstacle_factory

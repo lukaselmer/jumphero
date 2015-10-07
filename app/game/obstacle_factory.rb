@@ -1,7 +1,9 @@
 class ObstacleFactory
+  # @return [Array<Obstacle>]]
   attr_accessor :obstacles
 
-  def initialize(game_time)
+  def initialize(game_config, game_time)
+    @game_config = game_config
     @game_time = game_time
     reset
   end
@@ -14,12 +16,18 @@ class ObstacleFactory
 
   def update
     if must_generate_obstacle?
-      @obstacles << Obstacle.new(@game_time, 100, 3000)
+      @obstacles << Obstacle.new(@game_time, 100, @game_config.time_screen_shift)
       @generated_obstacles += 1
     end
+
+    destroy_old_obstacles
   end
 
   private
+
+  def destroy_old_obstacles
+    self.obstacles -= obstacles.select { |o| o.passed_by? }
+  end
 
   def time_since_start
     @game_time.s - @start_time
