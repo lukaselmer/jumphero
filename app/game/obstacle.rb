@@ -1,5 +1,7 @@
 class Obstacle
   # @return [Fixnum]
+  attr_accessor :width
+  # @return [Fixnum]
   attr_accessor :height
   # @return [Fixnum]
   attr_accessor :start_m
@@ -9,6 +11,7 @@ class Obstacle
   def initialize(game_time, height, duration_to_reach_left_side)
     @game_time = game_time
     self.height = height
+    self.width = height
     self.start_m = @game_time.m
     @duration_to_reach_left_side = duration_to_reach_left_side
   end
