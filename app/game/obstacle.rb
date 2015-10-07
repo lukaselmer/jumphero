@@ -17,4 +17,8 @@ class Obstacle
     duration_until_now = @game_time.m - start_m
     1.0 - (duration_until_now.to_f / @duration_to_reach_left_side)
   end
+
+  def passed_by?
+    relative_position < -0.5
+  end
 end

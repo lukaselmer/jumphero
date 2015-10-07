@@ -32,6 +32,20 @@ RSpec.describe Score do
       expect(@obstacle.relative_position).to be_within(0.01).of(0.0)
       @game_time.m = 4327
       expect(@obstacle.relative_position).to be_within(0.01).of(-0.3333)
+      @game_time.m = 4827
+      expect(@obstacle.relative_position).to be_within(0.01).of(-0.5)
+    end
+  end
+
+  describe '#passed_by?' do
+    it 'passes by' do
+      expect(@obstacle.passed_by?).to be_falsey
+      @game_time.m = 1327
+      expect(@obstacle.passed_by?).to be_falsey
+      @game_time.m = 4827
+      expect(@obstacle.passed_by?).to be_falsey
+      @game_time.m = 4927
+      expect(@obstacle.passed_by?).to be_truthy
     end
   end
 end
