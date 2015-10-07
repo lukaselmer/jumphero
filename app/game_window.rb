@@ -20,10 +20,12 @@ class GameWindow < Gosu::Window
   end
 
   def draw
-    @background_drawer.draw
-    @player_drawer.draw
-    @score_drawer.draw(width, height)
-    @obstacle_drawer.draw
+    unless @game.game_over?
+      @background_drawer.draw
+      @player_drawer.draw
+      @score_drawer.draw(width, height)
+      @obstacle_drawer.draw
+    end
   end
 
   def update

@@ -49,13 +49,28 @@ RSpec.describe Game do
       @game.reset
       expect(@game.obstacles.length).to eq(0)
     end
+
+    it 'resets the game over state' do
+      @game.update(100)
+      1.upto(40) do |i|
+        @game.update(i * 100)
+      end
+      expect(@game.game_over?).to be_truthy
+      @game.reset
+      expect(@game.game_over?).to be_falsey
+    end
   end
 
   describe '#update' do
-    it 'checks for colliding obstacles' do
+    it 'ends the game when colliding' do
+      expect(@game.game_over?).to be_falsey
       expect(@game.obstacles.length).to eq(0)
-      @game.update(200)
-      expect(@game.obstacles.length).to eq(1)
+      @game.update(100)
+      expect(@game.game_over?).to be_falsey
+      1.upto(40) do |i|
+        @game.update(i * 100)
+      end
+      expect(@game.game_over?).to be_truthy
     end
   end
 end

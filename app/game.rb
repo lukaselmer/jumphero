@@ -17,6 +17,11 @@ class Game
     @score = Score.new(@game_time)
     @collision_checker = CollisionChecker.new(
       dimensions[:character_start], dimensions[:character_width], dimensions[:window_width])
+    @game_over = false
+  end
+
+  def game_over?
+    @game_over
   end
 
   def obstacles
@@ -26,6 +31,7 @@ class Game
   def update(milliseconds = nil)
     @game_time.m = milliseconds || GosuHelper.m
     @obstacle_factory.update
+    check_collisions
   end
 
   def jumping?
@@ -51,5 +57,17 @@ class Game
   def reset
     @obstacle_factory.reset
     @score.reset
+    @game_over = false
+  end
+
+  private
+
+  def check_collisions
+    return if @game_over
+
+    if obstacles.any? { |o| @collision_checker.colliding?(@jumping_behavior, o) }
+      @game_over = true
+      @final_meters = @score.meters
+    end
   end
 end
