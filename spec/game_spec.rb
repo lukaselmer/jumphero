@@ -32,7 +32,7 @@ RSpec.describe Game do
     end
   end
 
-  describe 'reset' do
+  describe '#reset' do
     it 'resets the score' do
       @game.update(1000)
       expect(@game.meters).to be_between(10, 1000)
