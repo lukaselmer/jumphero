@@ -1,7 +1,6 @@
 require_relative '../app/logic/jumping_behavior'
 require_relative '../app/game_time'
 
-
 RSpec.describe JumpingBehavior do
   def update_with_time(m)
     @time.m = m

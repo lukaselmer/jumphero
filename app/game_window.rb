@@ -7,7 +7,7 @@ require_relative 'drawers/score_drawer'
 require_relative 'drawers/obstacle_drawer'
 
 class GameWindow < Gosu::Window
-  def initialize(width=1024, height=768, fullscreen=false)
+  def initialize(width = 1024, height = 768, fullscreen = false)
     super
     self.caption = 'Jump Hero'
     @game = Game.new
@@ -28,9 +28,7 @@ class GameWindow < Gosu::Window
   def update
     check_exit
 
-    if button_down? Gosu::KbUp
-      @jumping_sound.play if @game.jump
-    end
+    @jumping_sound.play if @game.jump if button_down? Gosu::KbUp
 
     @game.reset if button_down? Gosu::KbR
 
@@ -38,6 +36,7 @@ class GameWindow < Gosu::Window
   end
 
   private
+
   def check_exit
     close if button_down? Gosu::KbEscape
   end

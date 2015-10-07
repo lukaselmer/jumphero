@@ -5,7 +5,6 @@ require_relative 'logic/jumping_behavior'
 require_relative 'game/score'
 require_relative 'game/obstacle'
 
-
 class Game
   attr_reader :obstacles
 

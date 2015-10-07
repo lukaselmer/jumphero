@@ -37,6 +37,7 @@ class JumpingBehavior
   end
 
   private
+
   def update_jumping
     return unless jumping?
 

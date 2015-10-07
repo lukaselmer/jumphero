@@ -14,7 +14,7 @@ class Obstacle
   end
 
   def relative_position
-    duration_until_now = @game_time.m - self.start_m
-    1.0 - (duration_until_now.to_f / @duration_to_reach_left_side )
+    duration_until_now = @game_time.m - start_m
+    1.0 - (duration_until_now.to_f / @duration_to_reach_left_side)
   end
 end

@@ -1,7 +1,7 @@
 class PlayerDrawer
-  # @param [GameWindow] window
+  # @param [GameWindow] _window
   # @param [Game] game
-  def initialize(window, game)
+  def initialize(_window, game)
     @game = game
     @running_animation = (1..5).map { |i| GosuHelper.load_image("player/transparent/run/frame-#{i}.png") }
     @jump_up = GosuHelper.load_image('player/transparent/jump/jump-up.png')
@@ -10,7 +10,7 @@ class PlayerDrawer
 
   def draw
     player = current_animation
-    player.draw(10, 577 - @game.jumping_height, 0, scale_x=0.2, scale_y=0.2)
+    player.draw(10, 577 - @game.jumping_height, 0, 0.2, 0.2)
   end
 
   private
@@ -24,5 +24,4 @@ class PlayerDrawer
   def running_frame
     (GosuHelper.m.to_f / 75).round % @running_animation.length
   end
-
 end

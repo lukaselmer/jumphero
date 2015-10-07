@@ -21,7 +21,6 @@ RSpec.describe Score do
       @game_time.m = 35_000
       expect(@score.meters).to be_within(0.001).of(434)
     end
-
   end
 
   describe 'reset' do
