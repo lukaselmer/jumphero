@@ -5,21 +5,16 @@ class JumpingBehavior
   def initialize(config, game_time)
     @config = config
     @game_time = game_time
-    @jumping = false
-  end
-
-  def update
-    update_jumping
+    @jumping_start = -Float::INFINITY
   end
 
   def jumping?
-    @jumping
+    @jumping_start + @config.jump_duration > @game_time.m
   end
 
   def jump
     return if jumping?
     @jumping_start = @game_time.m
-    @jumping = true
   end
 
   def jumping_completion_rate
@@ -35,13 +30,5 @@ class JumpingBehavior
 
   def jumping_up?
     jumping_completion_rate <= 0.5
-  end
-
-  private
-
-  def update_jumping
-    return unless jumping?
-
-    @jumping = @jumping_start + @config.jump_duration > @game_time.m
   end
 end

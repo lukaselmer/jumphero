@@ -18,7 +18,6 @@ class Game
 
   def update(milliseconds = nil)
     @game_time.m = milliseconds || GosuHelper.m
-    @jumping_behavior.update
   end
 
   def jumping?
