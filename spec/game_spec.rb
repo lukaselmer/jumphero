@@ -42,10 +42,12 @@ RSpec.describe Game do
       expect(@game.meters).to eq(0)
     end
 
-    # it 'resets the obstacle factory' do
-    #   @obstacle_factory.generate_obstacle
-    #   @game.reset
-    #   expect(@obstacle_factory.obstacles).to eq([])
-    # end
+    it 'resets the obstacle factory' do
+      expect(@game.obstacles.length).to eq(0)
+      @game.update(200)
+      expect(@game.obstacles.length).to eq(1)
+      @game.reset
+      expect(@game.obstacles.length).to eq(0)
+    end
   end
 end

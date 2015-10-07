@@ -27,6 +27,6 @@ class ObstacleFactory
 
   def must_generate_obstacle?
     @generated_obstacles == 0 && time_since_start >= 0.1 ||
-      @generated_obstacles == 1 && time_since_start >= 1.5
+      @generated_obstacles == 1 && time_since_start >= 2.1
   end
 end

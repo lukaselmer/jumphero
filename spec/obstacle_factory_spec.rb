@@ -30,7 +30,7 @@ RSpec.describe ObstacleFactory do
       expect(@obstacle_factory.obstacles).to eq([])
       @game_time.m = 100
       @obstacle_factory.update
-      @game_time.m = 1500
+      @game_time.m = 2100
       @obstacle_factory.update
       expect(@obstacle_factory.obstacles.length).to eq(2)
     end

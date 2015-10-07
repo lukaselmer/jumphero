@@ -13,13 +13,18 @@ class Game
                  obstacle_factory = ObstacleFactory.new(game_time))
     @config = game_config
     @game_time = game_time
+    @obstacle_factory = obstacle_factory
     @jumping_behavior = JumpingBehavior.new(@config, @game_time)
     @score = Score.new(@game_time)
-    @obstacles = [Obstacle.new(game_time, 100, 3000)]
+  end
+
+  def obstacles
+    @obstacle_factory.obstacles
   end
 
   def update(milliseconds = nil)
     @game_time.m = milliseconds || GosuHelper.m
+    @obstacle_factory.update
   end
 
   def jumping?
@@ -43,6 +48,7 @@ class Game
   end
 
   def reset
+    @obstacle_factory.reset
     @score.reset
   end
 end
