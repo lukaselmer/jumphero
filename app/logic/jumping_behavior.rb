@@ -5,6 +5,7 @@ class JumpingBehavior
   def initialize(config, game_time)
     @config = config
     @game_time = game_time
+    @jumping = false
   end
 
   def update
