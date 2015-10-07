@@ -7,7 +7,7 @@ RSpec.describe Game do
     @game_config = GameConfig.new
     @game_config.jump_duration = 1500
     @obstacle_factory = ObstacleFactory.new(@game_config, game_time)
-    @game = Game.new(@game_config, game_time, @obstacle_factory)
+    @game = Game.new({ character_start: 10, character_width: 20, window_width: 100 }, @game_config, game_time, @obstacle_factory)
   end
 
   describe 'jumping' do
@@ -48,6 +48,14 @@ RSpec.describe Game do
       expect(@game.obstacles.length).to eq(1)
       @game.reset
       expect(@game.obstacles.length).to eq(0)
+    end
+  end
+
+  describe '#update' do
+    it 'checks for colliding obstacles' do
+      expect(@game.obstacles.length).to eq(0)
+      @game.update(200)
+      expect(@game.obstacles.length).to eq(1)
     end
   end
 end

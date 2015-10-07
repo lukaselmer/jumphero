@@ -10,7 +10,8 @@ class GameWindow < Gosu::Window
   def initialize(width = 1024, height = 768, fullscreen = false)
     super
     self.caption = 'Jump Hero'
-    @game = Game.new
+    # TODO: make these params dynamic
+    @game = Game.new({ character_start: 10.0, character_width: 61.4, window_width: width })
     @player_drawer = PlayerDrawer.new(self, @game)
     @background_drawer = BackgroundDrawer.new(self)
     @jumping_sound = GosuHelper.load_sample('jump/jump-1.m4a')
