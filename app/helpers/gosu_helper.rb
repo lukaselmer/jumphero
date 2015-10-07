@@ -18,4 +18,8 @@ module GosuHelper
   def load_sample(media_path)
     Gosu::Sample.new(Media.path(File.join('sound', media_path)))
   end
+
+  def floor_y
+    665
+  end
 end
